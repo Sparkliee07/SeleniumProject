@@ -1,0 +1,372 @@
+Selenium:(Jason huggins - 2004)
+Simon steward (webDriver - 2005)
+
+2009 - Selenium webdriver 
+QTP/UFT - Mercury
+
+What selenium do ?
+-Can automate only web applications
+-It can talk to browser like chrome firefox, etc
+-You can run your script in any platform (OS)-> Windows,Linux
+-You can write script in any languge (c#,java etc)
+What it cannot do ?
+-Can it automate excel sheet ? NO-(Java libraries -Apache POI)
+-can it automate mainframe applications -> No (java libraries - winAPPDriver)
+-Can it talk to database -> NO!!(Java libraries JDBC)
+
+Open Source tool 
+-> Selinium webdriver --> 40% market share --> 1.4 million
+-> Puppetter --> chrome/Java script
+-> Cypress --> chrome,firefox / javascript
+-> playwright
+-> Webdriver.io
+
+How selenium works 
+ webdrivermanager github.bonigarcia is driver group id will corresponding browser will doownloadpom.xml will download driver based on browsers 
+
+Locators 
+Id --> tag attroibute -> 1st priority  may change numbers
+Name --> attribute -> 2nd priority cannot use when its duplicate
+Linktext --> tag name should be <a> (anchor) --> 3rd priority cannot use 
+Class name --> attribute --> 4th priority do not use  cls with space 
+tagName --> we normally won't use it may be duplicated
+Partial LinkText --> if text is very big we can use part of text tag name should be <a> (anchor
+xPath --> XMLPath
+
+1.Absolute xPath -> It shouhld start with root tag
+Should start with '/'
+Fastest
+Mandatory -/tagname atleast one tag
+Java index start with 0
+Xpath index start index with 2  
+Xpath for username field
+/ html/body/div[2]/div[2]/div/form/p/input we donot prefer because user may change tags
+2.Relative xPath -> ".\\driver .represent current directory
+
+2.Relative xPath
+Mandatory -//tagname
+//input -> directly navigate to input login
+
+Basic xpath
+1.Attribute bases Xpath
+//tagName[@attributeName]=['attributevalue'] 
+//input[@id='password']
+F12 For open inspect shortcut
+
+2.Text Based Path
+//tagName[text()='textvalue']
+//h2[text()='leaftaps Login']
+
+3.Partial attribute based xpath 
+//tagName[contains(@attributeName,'attributeValue')]
+
+//input[contains(@class,'Submit')]
+//input[starts-with(@class,'decorative')]
+
+4.Partial text Based xpath
+//tagName[contains(text(),'textValue')]
+//h2[contains(text(),'Login')]
+
+	5. Index based xpath
+	(//input[@class='inputLogin'])[2] don’t use beyond 5
+
+Advanced xpath
+1.parent to child
+ 
+BasicXPathOfParent/tagNameOfChild[@attributeName = 'attributeValue]
+//p[@class-'top]/input[@id='username']
+
+2.child to parent:
+ basicXpathofChild/Parent::parentTagName[text()='value]
+
+//input[@id='username']/parent::p[@class='top']
+
+3.grandparent to grandchild
+basicXPath OfGrandParent //child TagName
+ //form[@id='login']//input[@name='USERNAME']
+4.Grand child to grand parent 
+basicXpathOfGrandChild/ancestor::grandParentTagName
+//input[@name='USERNAME']/ancestor::form[@id='login]
+5.ElderSiblling to YoungerSibling :
+basicXPathofElderSibling/following-sibling::input[@id='username']
+//label[text()='Username']/following -sbling ::ElderSiblingTagName
+6.YoungerSiblingToElderSibling 
+ basicXPathOfYoungerSibling/preceding-sibling::ElderSiblingTagName
+//input[@id='username]/preceding-sibling::label
+
+7.Eldercousintoyoungercousin
+ basicXPathOfElderCousin/following::YoungerCousinTagName
+//input[@id='username']/following::input[@id='password']
+8.Younger Cousin to elder cousin
+ basicXpathofyoungercousin/preceding::ElderCousinTagName
+ //input[@id='password']/preceding::input
+
+
+
+Code 
+Public class Login
+{
+ public static void main(String[] args)
+  {
+     WebDriverManager.chromedriver().setup();   //setup chrome driver
+    ChromeDriver driver = new ChromeDriver(); // Open the browser Chrome 
+      **Chromerdriver is a class  
+   driver.get("http://leaftaps.com/opentaps/control/main"); //load the url
+ driver.manage ().window().maximize(); //Maximize the window 
+ //Identify the webelement 
+WebElement eleuUserName = driver.findElement(By.id("username)) //  By is a class control2L click .
+eleUserName.sendKeys("DemosalesManager"); // Enter the usernames 
+ driver.findElement(By.id("password")).sendKeys("crmsfa"); //Enter the password 
+ driver.findElement(By.className("decorativeSubmit)).click//
+ driver.findElement(By.linkText("CRM/SFA")).click();
+ driver.findElement(By.linkText("Leads")).click();
+ driver.findElement(By.linkText("create Lead")).click();
+ driver.findElement(By.id("createLeadForm_companyName")).sendKeys("TestLeaf");
+driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Haja");
+driver.findElement(By.id("createLeadForm_lastName")).sendKeys("J");
+ driver.findElement(By.name("submitButton")).click();
+ Sting firstName = driver.findElement(By.id("viewLead_firstName_sp")).getText();
+ System.out.println(firstName);
+ Thread.sleep(2000);  // wil wait fot 2sec  need to add thorw declatartion
+ appending 
+ driver.findElement(By.id("email")).clear(); // it will clear the text and add
+ String value = driver.findElement(By.id("email")).getAttribute("value"); // it will print the value
+System.out.println(value);
+
+//To check if elemnt is disabled 
+ boolean enable = driver.findElement(By.id("email")).isEnabled();
+System.out.println(enabled);
+
+(For drop down the tag element is select )
+//1.Identify the drop down select element 
+ WebElement ele = driver.FindElement(By.id("dropdown1"));
+// 2. Create an object for select class select class is selenium 
+
+Select dd = new Select(ele);
+//3. choose the option 
+  **choose the option base on value
+ dd.selectByValue("2");
+  ** choose the option base on visibletext
+ dd.selectByVisibleText("UFT/QTP");
+ ** choose the option base on index
+ dd.selectByIndex(1);
+
+System.setProperty("webdriver.chrome.driver","path"); //set the environment variables 
+ dd.getOptions(); // it will get all the options
+
+//Get all the options from dropdown
+ List<WebElement> options = dd.getOptions(); 
+ for(int i=0;i<options.size();i++
+//Will print each text 
+{
+   WebElement eleOption = options.get(i);
+   String text=eleOption.getText();
+   System.out.prinln(text);
+}
+For selecting last 
+Int size = dd.getOptions().size();
+ dd.selectByIndex(size-2);
+
+If you have UL AND LL as dd you have to identify element normal click and inside click
+ 
+
+Selinium Waits:
+Max time will be set, but I will start if it comes earlier 
+1.implicit wait
+2.explicit wait
+ driver.manage().timeouts().implicitlyWait(Suration.ofSeconds(30));
+
+Access specifiers 
+Public   -> Global level access (instide package ))+ (extends ,object))
+Protected->(Inside package (extends,object),+ (outside package (extends )
+provate-> only with in the class
+Default-> only inside the same package 
+Static -> memory will be constant I will keep on overriing same memory when you update something it kkeps on overriding the existing values 
+
+Interface vs abstract vs concrete class
+If you waant to build project  always start with insterface
+-100%design -> 100%abstract
+-No implementation allowed 
+-you cannot write body contents for the method
+-Every method should be implemented
+-It cannot have constructor
+-A class can implents more than one interface
+
+Concept List(interface)--> implements Arraylist(class)
+ selenium webDriver(interface -> implements -> remotedriver(class)
+
+
+Abstract class -> 
+It have implemented and not implemented methods 
+You cannot create object
+To access the implemented methods of abstract class yiu have to create concrete class that extends abstract class
+
+Concerete 
+Can have only implemented method 
+
+Ex:
+Abstract list (abstract class) -> extends by arrayList(class)
+Selinum
+By (abstract class )-> extend by byxpath (class)
+
+List(Dynamic array)
+List -> Interface -:> you canot creat a object
+Hold data that can grow and shrink
+It allows to hold dublicate data
+Implementation class -> ArrayList(index),Linked List(next,prev)
+
+Methods//
+Sze add, remove,get contins
+Generic// store the type of allowed data on the given data structure
+List<String> learners = new ArrayList <String>();
+List is a interface arraylist is the implementation class of interface
+Learners.add("rmaon");
+
+Collections.sort(books);
+Collections is a class 
+Hashset -> hashing a;go ( java internally create hasing value for each key )
+Linked hasset -> Maintains the order of adding(like list)
+
+
+Target Locators 
+1.Alerts 
+2.Frames
+3.Windoes 
+How to take a screenshot
+
+Alert:
+A kind of notification  popup/dialog which provides some information
+1.Modal dialog
+
+a.) Simple alert ->   it has one button and a text message - accept(), getText()
+b.)prompt alert ->it hass 2 button and a input textfield -accept(),dismiss(),getText(),sendKeys()
+c.) confirmation alert -> it has 2 buttons and a text message accept(),dismiss(),getText(),
+
+Exceptions ; 
+1.Unhandled exception when you try to perfrom any actions without handling alert 
+	2. NoAlertPresentException trying to handle when no alert is present 
+
+Characteristics of alert 
+ 1.Cannot inspect the alert 
+	2. Cannot interact with main window unless alert is handled 
+	3. 
+2.Non modal dialog 
+
+Frame 
+In frame tag id or name is always same 
+Frame is like a ad page for web element 
+
+Public class LearnFrame 
+{
+   public static void main(String[] args)
+  {
+      WebDriverManager.chromedriver().setup();
+      ChromeDriver driver = new ChromeDriver();
+      driver.get("https//www.leafground.com/pages/frame.html");
+    driver.manage().window().maximize();
+   driver.switchTo().frame(0);
+ //name or id
+//webElement
+  driver.findElement(By.id("click")).click();
+  // to get out of frame
+  driver.switchTo().defaultContent();
+String text = driver.findElement(By.tagName("h1")).getText();
+System.out,println(text);
+WebElement frameEle = driver.findElement(By.xpath("(//div[@id='wrapframe']/iframe[2]
+ driver.switchTo().frame(frameEle);
+  driver.switchTo().frame("frame2");
+ driver.findElement(By.id("click1).click();
+//one level back 
+ driver.switchTo().parentFrame();
+
+
+//question
+ driver.get("https://www.w3schools.com/jsref/trit.sp?file")
+ driver.manage().window().maximize();
+ driver.switchTo().frame("iframeResult");
+ driver.switchTo().frame("iframeResult);
+ driver.findElement(By.xpath("//button[text()='Try it']")).
+Alert alert = driver.switchTo().alert();
+ alert.sentKeys("Haja");
+ alert.accept();
+String text = driver.findElement(By.id("demo")).getText();
+If(text.contains('Haja"))
+{ 
+   System.out.println("success");
+}
+Else
+{
+  System.out.println("fail");
+}
+}
+}
+
+
+Windows :  it’s a brower window
+Tab -> each and everysection is a tab
+
+In selenium both windows and tabs are handled same 
+
+Set it wil not allows duplicates 
+
+Workkk,
+ WebDriverManager.chromedriver().setup();
+ChromeDriver driver = new ChromeDriver();
+ driver.get("https://www.lefgrounf.com/pages/window.html");
+ driver.manage().window().maximize();
+ driver.findElement(By.id("home")).click();
+ //get the number of windows 
+ Set<String>windowHandles = driver.getWindowHandles();
+
+//set wont print the valuses so convert to list
+ List<String> webwindow = new ArrayList<String>(windowHandles);
+ for(int i=0;i<windowHanles.size();i++)
+{
+    System.out.println(webwindow.get(i)):
+}
+ driver.switchTo().window(webwindow.get(1)); // return linked hashset 
+ System.out.println(driver.getTitle()); 
+// switching based on title 
+ for(inti=0;i<window.size();i++)
+{ 
+   if(windows.get(i).equals("TestLeaf - Selenium Playground"))
+     driver.switchTo().window(windows.get(i));
+}
+}
+System.out,print(driver.getTitle()):
+Driver.quit() //will close all windows and tabs 
+
+ ChromeOptions options = new ChromeOptions();
+ Options.addArguments("--disable-notification");
+
+
+Taking a screenshot a file
+Public class LearnScreenshot
+{
+    public static void main(String[] args) throws IOException
+{ 
+    WebDriverManager.chromedriver().setup();
+   ChromeOptions options = new ChromeOptions();
+  options.addArguments("--disable-notifications");
+ ChromeDriver driver = new ChromeDriver(options);
+  driver.get("https://www.irctc.co.in/nget/train-search");
+ driver.manage().window().maximize();
+ File Source = driver.getScreenshotAs(OutputType.FILE);
+ File destination = new File("./screenshot.png");
+ FileUtils.copyFile(source,destination);
+}
+
+Qns: source is temp,
+ getscreenshotas 
+
+For particular element 
+ we need to use ele.Get screenshot
+
+ 
+ 
+
+ 
+
+   
+
+
