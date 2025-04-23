@@ -365,6 +365,33 @@ For particular element
  Javaaa
  Interface vs Abstract vs Concrete class
  
+ Today's agenda
+ 1.Handling multiple webelemnts 
+ 2.Handling WebTable 
+ 3.Advanced User Interaction(Actions)
+ 4.Explicit Wait
+ 
+ Handling multiple elements 
+ 
+   -findElements (return list of webelements)
+   
+   -for getting columns always choose th(header) because td column will blank 
+ 
+ 
+ Advanced User actions (AUI)
+ Keyboard Actions;
+ sendKeys
+ 
+ MouseActions:
+ Click.
+ DoubleClick
+ contextClick
+ Draganddrop
+ mouseover-> move to element
+ 
+ 
+ 
+ 
 
  
  
