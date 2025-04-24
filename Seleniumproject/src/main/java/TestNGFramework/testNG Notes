@@ -1,0 +1,9 @@
+Test Execution Framwork
+
+Advantages;
+  1. Has the feature to execute multiple test cases sequentially
+  2. Has the feature to execute multiple test cases parallely
+  3. Gives ths status like passs/fail for the test Execution
+  4. Gives the test execution report as Summary(HTML Rreport)
+  5. Support the data driven - to execute tests with multiple data 
+  6.

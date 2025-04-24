@@ -1,0 +1,17 @@
+Metadata-Version: 2.2
+Name: ATLAS
+Version: 1.0.0
+Summary: A Python framework for test automation
+Author: Muthulakshmanan Nagarajan
+Author-email: muthulakshmanan.nagarajan@teradyne.com
+Requires-Python: >=3.7
+Requires-Dist: pytest
+Requires-Dist: allure-pytest
+Requires-Dist: allure-behave
+Requires-Dist: behave
+Requires-Dist: paramiko
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

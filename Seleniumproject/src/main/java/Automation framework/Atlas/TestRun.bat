@@ -1,0 +1,2 @@
+behave --tags=@HAL-9009,@HAL-9008,@HAL-9007,@HAL-9006,@HAL-9005 -f allure_behave.formatter:AllureFormatter -o reports/allure-results
+allure generate reports/allure-results -o reports/allure-report --clean

@@ -1,0 +1,5 @@
+pytest
+allure-pytest
+allure-behave
+behave
+paramiko
