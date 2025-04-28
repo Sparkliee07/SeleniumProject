@@ -1,0 +1,8 @@
+ATLAS/
+│── features/
+│   │── sample.feature
+│   │── steps/
+│   │   ├── step_definitions.py
+│   │── environment.py
+│── requirements.txt
+Reports

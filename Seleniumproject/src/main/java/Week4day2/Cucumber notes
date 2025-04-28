@@ -1,0 +1,59 @@
+Cucumber:
+ -BDD Introduction
+ -Gherkin words
+ -How to write features using Gherkin Keyword
+ -Implement step definition
+ -How to execute the feautre file
+ -Data parameterization
+ 
+ Cucumber - Its a BDD automation framework
+ 
+  BDD - Behaviour driven development 
+  TDD - Test drivern development 
+  --------------------------------
+  --Write the test cases first
+  --Review and approve the test cases 
+  --Approved test cases will drive the development 
+  ATDD - Acceptance Test Drivern Development
+  -----------------------------------------
+  Write the user Acceptance test cases
+  Review and approve test cases
+  -Approved UAT Cases will drive the development
+  
+  BDD - Behaviour driven development 
+  -------------------------------
+  -To address communication gap between techinal and non technical team
+  -comman language to wrote test cases which is understandle by technical and non technical team
+  --BDD is only for agile 
+  Gherkin----
+  Gherkin is the language that cucumber understands its a "Business Readable Domain Specific langauge "
+  Ghrkin keywords _____
+  *Feature
+  *Background
+  *Scenario
+  *Given 
+  *When
+  *Then
+  *But
+  *And
+  *Examples
+  *Scenerio Outline 
+  
+  feature---> used to describe the functionality
+  Scenario--->used to describe the test cases
+  Given ---> Is used to represent preCondition
+  When ---> Is used to represent testconditon
+  Then ---> Used torepresent expected result for positive scenerio
+  But ----> Used to represent expected result in negative scenrio
+  
+  
+  Layers in cucumber -------
+  Features layer(Gherkin) ---> Used to write the BDD Test scenerio
+  Step definition (java/selenium)--> used to write selenium code 
+  Runner(Testng)-->Used to execute BDD Scenerio
+  
+  need 2 dependcies cucumber java
+  and cucumber TestNG
+   
+  need 2 plugins cucumber,naturalio
+  

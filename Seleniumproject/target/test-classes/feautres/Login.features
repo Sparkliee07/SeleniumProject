@@ -1,0 +1,9 @@
+Feature: Login functionality for leaftaps application
+
+Scenario:Login with positive credential
+Given Open the Chrome browser 
+Given Load the applications url http://leaftaps.com/opentaps
+Given Enter the username as Demosalesmanager
+Given Enter the password as crmfsa
+When Click on Login button
+Then Homepage should be displayed
