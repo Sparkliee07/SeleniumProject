@@ -54,6 +54,8 @@ Cucumber:
   
   need 2 dependcies cucumber java
   and cucumber TestNG
-   
+  
+  how do you use cucumber feature 
+  ---we have a AbstractTestNGCucumberTestss class we can extend the class we will use the feautre
   need 2 plugins cucumber,naturalio
   

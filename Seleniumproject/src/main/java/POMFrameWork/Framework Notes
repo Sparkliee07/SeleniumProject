@@ -1,0 +1,25 @@
+Why framework??
+    -->Easy Maintenance
+    -->Increased Productivity
+    -->Maintain uniformity /Coding standard
+    -->Reduce Duplication
+    -->Handle multilingual application
+    -->Better Reporting 
+    
+Page Object Model --> Design pattern /Framework
+ 
+    *create a maven project
+    *Add dependencies in pom xml file 
+ Rules to be followed :
+  1.Create  a base class to have all common methods and variables under a base package 
+  2.Create a seperate java class for each Page that we navigate in the application
+  3. All the pages should extend baseClass
+  4. Create seperate methods for each action/verification in the respective pages 
+  5.All the methods should have a return type based on landing oage
+  
+  **LoginPage
+  **HomePage
+  **MyHomePage
+  **LeadsPage
+  **CreateLeadPage
+  **ViewLeadsPage
